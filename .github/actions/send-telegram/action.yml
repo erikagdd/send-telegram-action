@@ -1,0 +1,21 @@
+name: Send Telegram Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  envio_missatge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Executar acció personalitzada per a enviar a Telegram
+        uses: ./.github/actions/send-telegram
+        with:
+          name: "Erika"
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
