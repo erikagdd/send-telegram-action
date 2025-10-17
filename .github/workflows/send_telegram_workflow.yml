@@ -12,6 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Instal·lar dependències
+        run: npm install
+        working-directory: ./.github/actions/send-telegram
+
       - name: Executar acció personalitzada d’enviament a Telegram
         uses: ./.github/actions/send-telegram
         with:
