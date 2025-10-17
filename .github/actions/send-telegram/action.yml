@@ -1,21 +1,12 @@
-name: Send Telegram Workflow
+name: "Send Telegram Message"
+description: "Custom Action per enviar un missatge a Telegram"
+author: "Erika Guillem"
 
-on:
-  push:
-    branches:
-      - main
+inputs:
+  name:
+    description: "Nom de la persona que envia el missatge"
+    required: true
 
-jobs:
-  envio_missatge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Executar acció personalitzada per a enviar a Telegram
-        uses: ./.github/actions/send-telegram
-        with:
-          name: "Erika"
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+runs:
+  using: "node20"
+  main: "index.js"
